@@ -10,7 +10,7 @@ package pentamester.runnable;
  */
 public class ThreadExample {
 
-    public void main(String[] args) {
+    public void main(String[] args) throws InterruptedException {
         Thread t1;
         t1 = new Thread(new MyRunnable());
         t1.setName("Thread-Runnable");
