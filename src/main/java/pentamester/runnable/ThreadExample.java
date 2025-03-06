@@ -11,7 +11,24 @@ package pentamester.runnable;
 public class ThreadExample {
 
     public void main(String[] args) {
-        Thread t1 = new Thread((Runnable) new MyRunnable());
-        t1.setName("T")
+        Thread t1;
+        t1 = new Thread(new MyRunnable());
+        t1.setName("Thread-Runnable");
+        //t1.run()
+        /* 
+        se si chiama start():        
+        Il metodo run() viene eseguito come un normale metodo Java nel thread principale (main),
+        non in un nuovo thread.Il nome del thread sarà main, perché run() non viene eseguito 
+        in parallelo.
+        */
+        t1.start();
+        /* 
+        se si aggiunge  join():
+        t1.join(); fa sì che il thread principale attenda il completamento di t1 prima di proseguire.
+        Senza join(), il thread main potrebbe stampare il suo messaggio prima o dopo t1, ma con join(),
+        l'ordine è garantito.
+        */
+        t1.join();
+        System.out.println("Thread principale: " + Thread.currentThread().getName());
     }
 }
